@@ -10,6 +10,7 @@ package meuprojeto.entity;
  * @author farah
  */
 public class Bairro {
+
     private Integer id;
 
     public Integer getId() {
@@ -28,5 +29,10 @@ public class Bairro {
         this.nome = nome;
     }
     private String nome;
-    
+
+    @Override
+    public String toString() {
+        return this.nome;
+    }
+
 }

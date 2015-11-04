@@ -33,9 +33,13 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
         
         initComponents();  
         listaBairros = CadastroDeBairros.getInstance().getListaBairros();
-        DefaultComboBoxModel modeloBairros =(DefaultComboBoxModel) cbbBairros.getModel();
-        
-        cbbBairros = new JComboBox(listaBairros)
+        //DefaultComboBoxModel modeloBairros =(DefaultComboBoxModel) cbbBairros.getModel();
+        //cbbBairros = new JComboBox(listaBairros.toArray());
+        cbbBairros.removeAllItems();
+        for(Bairro s:listaBairros){
+            cbbBairros.addItem(s);
+        }
+        //cbbBairros.setVisible(true);
     }
     
     public static CadastroDeClientes getInstance(){
@@ -43,6 +47,7 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
             INSTANCIA = new CadastroDeClientes();
         return INSTANCIA;
     }
+    
     
     class MeuTableModel extends AbstractTableModel {
         private String[] nomeColunas = {"Código", "Nome"};
@@ -129,7 +134,6 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
         txtNome.setPreferredSize(new java.awt.Dimension(150, 33));
         jPanel1.add(txtNome);
 
-        cbbBairros.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbbBairros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbBairrosActionPerformed(evt);
@@ -183,6 +187,7 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
         Cliente cliente = new Cliente();
         cliente.setId(id);
         cliente.setNome(nomeCliente);
+        cliente.setBairro((Bairro)cbbBairros.getSelectedItem());
         listaClientes.add(cliente);
         Collections.sort(listaClientes);
         tabelaClientes = new MeuTableModel(listaClientes);

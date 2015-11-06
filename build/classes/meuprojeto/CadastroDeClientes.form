@@ -67,6 +67,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbBairrosActionPerformed"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cbbBairrosFocusGained"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAdicionarNome">

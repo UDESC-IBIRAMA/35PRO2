@@ -27,19 +27,13 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Bairro> listaBairros;
     private TableModel tabelaClientes;
+    private int tamanho;
     
     private CadastroDeClientes() {
         this.listaClientes = new ArrayList<Cliente>();
         
         initComponents();  
-        listaBairros = CadastroDeBairros.getInstance().getListaBairros();
-        //DefaultComboBoxModel modeloBairros =(DefaultComboBoxModel) cbbBairros.getModel();
-        //cbbBairros = new JComboBox(listaBairros.toArray());
-        cbbBairros.removeAllItems();
-        for(Bairro s:listaBairros){
-            cbbBairros.addItem(s);
-        }
-        //cbbBairros.setVisible(true);
+        
     }
     
     public static CadastroDeClientes getInstance(){
@@ -139,6 +133,11 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
                 cbbBairrosActionPerformed(evt);
             }
         });
+        cbbBairros.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cbbBairrosFocusGained(evt);
+            }
+        });
         jPanel1.add(cbbBairros);
 
         btnAdicionarNome.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
@@ -205,6 +204,7 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //((DefaultTableModel)tblClientes.getModel()).removeRow(tblClientes.getSelectedRow());
+        JOptionPane.showMessageDialog(this, tblClientes.getValueAt(tblClientes.getSelectedRow(), 0));
         System.out.println("Não implementado ainda...");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -213,8 +213,19 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosed
 
     private void cbbBairrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbBairrosActionPerformed
-        // TODO add your handling code here:
+        
+                
+        
     }//GEN-LAST:event_cbbBairrosActionPerformed
+
+    private void cbbBairrosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbbBairrosFocusGained
+        listaBairros = CadastroDeBairros.getInstance().getListaBairros();
+        
+        cbbBairros.removeAllItems();
+        for(Bairro bairro:listaBairros){
+            cbbBairros.addItem(bairro);
+        }
+    }//GEN-LAST:event_cbbBairrosFocusGained
 
 
     

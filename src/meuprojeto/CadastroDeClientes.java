@@ -49,7 +49,20 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
         private ArrayList<Cliente> listaClientes;
 
         public MeuTableModel(ArrayList<Cliente> lista){
+            System.out.println("meutablemodel...");
             this.listaClientes = new ArrayList<>(lista);
+            this.setColumnName(0,"Código");
+            this.setColumnName(1,"Nome");
+        }
+        
+        @Override
+        public String getColumnName(int i) {
+            return nomeColunas[i];
+        }
+            
+        
+        public void setColumnName(int i, String name) {
+            nomeColunas[i] = name;
         }
 
         @Override

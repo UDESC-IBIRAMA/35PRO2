@@ -10,6 +10,9 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import meuprojeto.dao.Conexao;
+import meuprojeto.dao.PaisDAO;
+import meuprojeto.entity.Pais;
 
 /**
  *
@@ -139,6 +142,10 @@ public class Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //Conexao con = new Conexao();
+        Pais pais = new Pais();
+        pais.setNome("Argentina");
+        PaisDAO.salvar(pais);
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

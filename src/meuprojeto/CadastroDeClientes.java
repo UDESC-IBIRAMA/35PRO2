@@ -99,6 +99,7 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lblId = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         cbbBairros = new javax.swing.JComboBox();
@@ -107,6 +108,7 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        btnEditar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setClosable(true);
@@ -131,6 +133,8 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
         });
+
+        jPanel1.add(lblId);
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(85, 142, 249));
@@ -173,6 +177,15 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
+        btnEditar.setMnemonic('e');
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnEditar);
+
         jButton1.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         jButton1.setForeground(new java.awt.Color(249, 16, 13));
         jButton1.setMnemonic('R');
@@ -190,25 +203,40 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarNomeActionPerformed
-      String nomeCliente = txtNome.getText();
+        int idCliente = -1;
+        String label_id = lblId.getText();
+        if (label_id != ""){
+            idCliente = Integer.parseInt(label_id);
+        }
+        String nomeCliente = txtNome.getText();
       if(nomeCliente.equals("")){
           JOptionPane.showMessageDialog(this,"O Campo Nome é obrigatório!");
       
       }else{
-        int id = listaClientes.size();
-        Cliente cliente = new Cliente();
-        cliente.setId(id);
-        cliente.setNome(nomeCliente);
-        cliente.setBairro((Bairro)cbbBairros.getSelectedItem());
-        listaClientes.add(cliente);
-        Collections.sort(listaClientes);
-        tabelaClientes = new MeuTableModel(listaClientes);
-        tblClientes.setModel(tabelaClientes);
-          //Modelo da Tabela
-        //DefaultTableModel tabelaClientes = (DefaultTableModel) tblClientes.getModel();
-        //DefaultTableModel tabelaClientes = new DefaultTableModel());
-        //tabelaClientes.addRow(new Object[]{nomeCliente});
+        if(idCliente > -1){
+            //alterar
+            listaClientes.get(idCliente).setNome(txtNome.getText());
+            tabelaClientes = new MeuTableModel(listaClientes);
+            tblClientes.setModel(tabelaClientes);
+            
+            
+        }else{
+            int id = listaClientes.size();
+            Cliente cliente = new Cliente();
+            cliente.setId(id);
+            cliente.setNome(nomeCliente);
+            cliente.setBairro((Bairro)cbbBairros.getSelectedItem());
+            listaClientes.add(cliente);
+            Collections.sort(listaClientes);
+            tabelaClientes = new MeuTableModel(listaClientes);
+            tblClientes.setModel(tabelaClientes);
+              //Modelo da Tabela
+            //DefaultTableModel tabelaClientes = (DefaultTableModel) tblClientes.getModel();
+            //DefaultTableModel tabelaClientes = new DefaultTableModel());
+            //tabelaClientes.addRow(new Object[]{nomeCliente});
+        }
         txtNome.setText("");
+        lblId.setText("");
       }
       txtNome.requestFocus();
     }//GEN-LAST:event_btnAdicionarNomeActionPerformed
@@ -240,11 +268,16 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cbbBairrosFocusGained
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        lblId.setText(Integer.toString(tblClientes.getSelectedRow()));
+    }//GEN-LAST:event_btnEditarActionPerformed
+
 
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarNome;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JComboBox cbbBairros;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -252,6 +285,7 @@ public class CadastroDeClientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblId;
     private javax.swing.JTable tblClientes;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables

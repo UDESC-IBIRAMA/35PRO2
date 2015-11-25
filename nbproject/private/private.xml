@@ -5,11 +5,6 @@
         <group>
             <file>file:/home/farah/NetBeansProjects/MeuProjeto/src/meuprojeto/dao/PaisDAO.java</file>
             <file>file:/home/farah/NetBeansProjects/MeuProjeto/src/meuprojeto/dao/DAO.java</file>
-            <file>file:/home/farah/NetBeansProjects/MeuProjeto/src/meuprojeto/dao/Conexao.java</file>
-            <file>file:/home/farah/NetBeansProjects/MeuProjeto/src/meuprojeto/Principal.java</file>
-            <file>file:/home/farah/NetBeansProjects/MeuProjeto/src/meuprojeto/dao/ClienteJPADAO.java</file>
-            <file>file:/home/farah/NetBeansProjects/MeuProjeto/src/meuprojeto/entity/Pais.java</file>
-            <file>file:/home/farah/NetBeansProjects/MeuProjeto/src/meuprojeto/entity/Bairro.java</file>
             <file>file:/home/farah/NetBeansProjects/MeuProjeto/src/META-INF/persistence.xml</file>
         </group>
     </open-files>

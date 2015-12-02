@@ -30,7 +30,7 @@ public class DAO {
         } 
     }
     
-    protected Query criarQuery(String query) {
+    protected static Query criarQuery(String query) {
         EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("MeuProjetoPU");
         EntityManager em = emf.createEntityManager();
         return em.createQuery(query);

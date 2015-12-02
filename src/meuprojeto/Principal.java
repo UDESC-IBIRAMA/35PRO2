@@ -44,8 +44,9 @@ public class Principal extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        mnuCadastrosClientes = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        mnuCadastrosClientes = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -55,6 +56,14 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("Cadastros");
 
+        jMenuItem2.setText("Bairros");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
         mnuCadastrosClientes.setText("Clientes");
         mnuCadastrosClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,13 +72,13 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(mnuCadastrosClientes);
 
-        jMenuItem2.setText("Bairros");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem3.setText("Pais");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jMenuItem3);
 
         jMenuItem1.setText("Sair");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +123,14 @@ public class Principal extends javax.swing.JFrame {
         if(!cadBairros.isVisible())
             cadBairros.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        CadastroDePaises cadPais = CadastroDePaises.getInstance();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(cadPais);
+        if(!cadPais.isVisible())
+            cadPais.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     
     
@@ -160,7 +177,7 @@ public class Principal extends javax.swing.JFrame {
         
         //Criar Estado
         Estado estado = new Estado();
-        estado.setNome("SC");
+        estado.setNome("PR");
         estado.setPais(paisLido);
         EstadoDAO.salvar(estado);
 
@@ -179,6 +196,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem mnuCadastrosClientes;
     // End of variables declaration//GEN-END:variables
 }

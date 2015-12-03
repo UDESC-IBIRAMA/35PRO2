@@ -102,6 +102,8 @@ public class CadastroDePaises extends javax.swing.JInternalFrame {
         Pais p = new Pais();
         p.setNome(txtNome.getText());
         PaisDAO.salvar(p);
+        TableModelPaises tmp = new TableModelPaises();
+        tblPais.setModel(tmp);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     class TableModelPaises extends AbstractTableModel {

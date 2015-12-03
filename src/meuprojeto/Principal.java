@@ -169,7 +169,7 @@ public class Principal extends javax.swing.JFrame {
         PaisDAO.salvar(pais);
         
         //ler objeto persistido
-        Pais paisLido = (Pais) PaisDAO.ler(Pais.class, 1);
+        Pais paisLido = (Pais) PaisDAO.lerPais(1);
         
         //Alterar paisLido
         paisLido.setNome("Brasil");

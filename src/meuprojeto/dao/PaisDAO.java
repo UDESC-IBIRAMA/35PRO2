@@ -25,4 +25,8 @@ public class PaisDAO extends DAO{
         System.out.println("total: "+ l.size());
         return l;
     }
+    
+    public static Object lerPais(long id){
+        return ler(Pais.class, id);
+    }
 }
